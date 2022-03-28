@@ -7,8 +7,10 @@ const addBookHandler = function () {
   libraryForm.classList.add("visible");
 };
 
-addBookBtn.addEventListener("click", addBookHandler);
-backDrop.addEventListener("click", () => {
+const addBackDropHandler = () => {
   backDrop.classList.remove("visible");
   libraryForm.classList.remove("visible");
-});
+};
+
+addBookBtn.addEventListener("click", addBookHandler);
+backDrop.addEventListener("click", addBackDropHandler);
