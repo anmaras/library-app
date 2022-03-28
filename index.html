@@ -23,7 +23,7 @@
       </div>
     </header>
     <main>
-      <form class="book-form">
+      <div class="book-form">
         <p class="book-form__title">Add your Book</p>
         <label for="book-title"></label>
         <input
@@ -38,32 +38,32 @@
           type="text"
           name="book-author"
           id="book-author"
-          required
           placeholder="Author"
+          required
         />
         <label for="book-pages"></label>
         <input
           type="number"
           name="book-pages"
           id="book-pages"
-          required
           placeholder="Pages"
+          required
         />
         <div class="book-form__checkbox">
           <label for="book-read">Have you read it?</label>
           <input type="checkbox" name="book" id="book-read" />
         </div>
-        <button type="submit" class="button-submit">Add Book</button>
 
         <!-- <button class="button-delete">Delete</button> -->
-      </form>
+        <button class="button-submit">Add Book</button>
+      </div>
       <ul class="books-list__items">
         <li class="books-list__item">
-          <!-- <div class="book-list__item-title">Title</div>
+          <div class="book-list__item-title">Title</div>
           <div class="book-list__item-author">Author</div>
           <div class="book-list__item-pages">Pages</div>
           <button class="read-status not-read">Read-Status</button>
-          <button class="book-list__item-delete">Remove</button> -->
+          <button class="book-list__item-delete">Remove</button>
         </li>
       </ul>
     </main>
