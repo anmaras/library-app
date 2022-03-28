@@ -1,0 +1,174 @@
+:root {
+  --ff-main: "Ubuntu", san-serif, serif;
+  --footer-header-txt-color: white;
+  --header-bg-clr: black;
+  --footer-bf-clr: black;
+  --form-bf-crl: rgb(235, 235, 235);
+  --form-btn-bg-clr: rgb(0, 140, 255);
+  --form-btn-txt-clr: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--ff-main);
+  min-height: 100vh;
+
+  /* Body Children Potition */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: var(--header-bg-clr);
+  color: var(--footer-header-txt-color);
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-title {
+  justify-self: center;
+  min-width: max-content;
+}
+
+.header-button {
+  background-color: var(--form-btn-bg-clr);
+  color: var(--form-btn-txt-clr);
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-style: none;
+  border-radius: 30px;
+  min-width: fit-content;
+}
+
+.backdrop {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+  width: 100vw;
+  /* Potition relative for form */
+  position: relative;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.book-form__title {
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.book-form {
+  /* Form position */
+  position: absolute;
+  z-index: 20;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Form sizing */
+  padding: 1rem;
+  height: 500px;
+  max-width: max-content;
+  background-color: var(--form-bf-crl);
+  border-radius: 5px;
+
+  /* Form Children Potition */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  /* Form visibility */
+  display: none;
+}
+
+input {
+  font-size: 1.35rem;
+  padding: 0.5rem;
+}
+
+.book-form__checkbox {
+  display: flex;
+}
+
+/* CheckBox Style */
+label[for="book-read"] {
+  font-size: 1.25rem;
+}
+input[type="checkbox"] {
+  margin-left: 1rem;
+  width: 25px;
+  height: 25px;
+}
+
+/* Book Form Button */
+.button-submit {
+  font-size: 1.35rem;
+  padding: 1rem 2rem;
+  background-color: var(--form-btn-bg-clr);
+  color: var(--form-btn-txt-clr);
+}
+
+/* Books List */
+
+.books-list__items {
+  display: grid;
+  /* display: none; */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.books-list__item {
+  padding: 1rem;
+  display: grid;
+  row-gap: 1rem;
+  justify-items: center;
+  justify-content: center;
+  background-color: rgb(151, 151, 151);
+}
+
+.book-list__item-title,
+.book-list__item-author,
+.book-list__item-pages {
+  font-size: 2rem;
+}
+
+li button {
+  font-size: 2rem;
+}
+
+footer {
+  font-size: 1rem;
+  color: var(--footer-header-txt-color);
+  background-color: var(--footer-bf-clr);
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
