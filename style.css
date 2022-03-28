@@ -144,23 +144,19 @@ input[type="checkbox"] {
 
 /* BOOK LIST*/
 .books-list__items {
-  margin: auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 1rem;
-  background-color: rgb(151, 151, 151);
   display: none;
 }
 
-.books-list__items-hidden {
-  display: none;
+.books-list__items.visible {
+  display: grid;
 }
 
 .books-list__item {
-  padding: 1rem;
+  background-color: rgb(151, 151, 151);
   display: grid;
-  row-gap: 1rem;
+  padding: 1rem;
   justify-items: center;
   justify-content: center;
 }
