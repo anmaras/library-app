@@ -5,17 +5,25 @@ const bookSubmitBtn = document.querySelector(".button-submit");
 
 let myLibrary = [];
 
-function Books(title, author, pages) {
+function Books(title, author, pages, readStatus) {
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.readStatus = readStatus;
 }
+
+Books.prototype.readCheck = function () {
+  return this.readStatus
+    ? (this.readStatus = "Read")
+    : (this.readStatus = "Unread");
+};
 
 const renderBookList = () => {
   const booksList = document.querySelector(".books-list__items");
   if (myLibrary.length !== 0) {
     booksList.classList.add("visible");
   } else return;
+
   // need to refactor this
   booksList.replaceChildren();
 
@@ -37,7 +45,7 @@ const renderBookList = () => {
     bookListTitle.textContent = book.title;
     bookListAuthor.textContent = book.author;
     bookListPage.textContent = book.pages;
-    readStatusBtn.textContent = "Read-Status";
+    readStatusBtn.textContent = book.readStatus;
     deleteBookBtn.textContent = "Remove";
 
     booksList.append(list);
@@ -60,15 +68,16 @@ function addBookToLibraryHandler() {
   const bookTitle = document.getElementById("book-title").value;
   const bookAuthor = document.getElementById("book-author").value;
   const bookPages = document.getElementById("book-pages").value;
+  const checkbox = document.getElementById("book-read").checked;
 
-  const book = new Books(bookTitle, bookAuthor, bookPages);
+  const book = new Books(bookTitle, bookAuthor, bookPages, checkbox);
   myLibrary.push(book);
-
-  addBackDropHandler();
+  book.readCheck();
+  // addBackDropHandler();
   renderBookList();
 }
 
-const addBookHandler = function () {
+const showBookFormHandler = function () {
   backDrop.classList.add("visible");
   libraryForm.classList.add("visible");
 };
@@ -78,6 +87,8 @@ const addBackDropHandler = () => {
   libraryForm.classList.remove("visible");
 };
 
-addBookBtn.addEventListener("click", addBookHandler);
+addBookBtn.addEventListener("click", showBookFormHandler);
+
 backDrop.addEventListener("click", addBackDropHandler);
+
 bookSubmitBtn.addEventListener("click", addBookToLibraryHandler);
