@@ -1,10 +1,10 @@
 :root {
   --ff-main: "Ubuntu", san-serif, serif;
   --footer-header-txt-color: white;
-  --header-bg-clr: black;
-  --footer-bf-clr: black;
+  --header-bg-clr: rgb(42, 146, 243);
+  --footer-bf-clr: rgb(42, 146, 243);
   --form-bf-crl: rgb(235, 235, 235);
-  --form-btn-bg-clr: rgb(0, 140, 255);
+  --form-btn-bg-clr: rgb(253, 176, 75);
   --form-btn-txt-clr: white;
 }
 
@@ -155,7 +155,7 @@ input[type="checkbox"] {
 }
 
 .books-list__item {
-  background-color: rgb(151, 151, 151);
+  background-color: rgb(207, 207, 207);
   display: grid;
   padding: 1rem;
   justify-items: center;

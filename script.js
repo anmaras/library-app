@@ -6,7 +6,7 @@ const booksList = document.querySelector(".books-list__items");
 
 let myLibrary = [];
 
-// Utilities Function
+// Utilities Functions
 
 const showBookFormHandler = function () {
   backDrop.classList.add("visible");
@@ -46,6 +46,8 @@ function addBookToLibraryHandler() {
   const bookAuthor = document.getElementById("book-author").value;
   const bookPages = document.getElementById("book-pages").value;
   const checkbox = document.getElementById("book-read").checked;
+
+  if (bookTitle === "" || bookAuthor === "" || bookPages === "") return;
 
   const book = new Books(bookTitle, bookAuthor, bookPages, checkbox);
 
@@ -89,12 +91,6 @@ const renderBookList = function () {
       deleteBookBtn
     );
 
-    deleteBookBtn.addEventListener("click", function () {
-      booksList.removeChild(this.parentElement);
-      myLibrary.splice(this, 1);
-      console.log(myLibrary);
-    });
-
     if (book.readStatus) {
       readStatusBtn.style.background = "green";
       readStatusBtn.textContent = "Read";
@@ -102,6 +98,21 @@ const renderBookList = function () {
       readStatusBtn.style.background = "red";
       readStatusBtn.textContent = "Unread";
     }
+
+    deleteBookBtn.addEventListener("click", function () {
+      booksList.removeChild(this.parentElement);
+      myLibrary.splice(this, 1);
+    });
+
+    readStatusBtn.addEventListener("click", () => {
+      if (readStatusBtn.textContent === "Read") {
+        readStatusBtn.textContent = "Unread";
+        readStatusBtn.style.background = "red";
+      } else {
+        readStatusBtn.textContent = "Read";
+        readStatusBtn.style.background = "green";
+      }
+    });
   });
 };
 
