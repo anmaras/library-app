@@ -16,7 +16,9 @@ function Books(title, author, pages, readStatus) {
 Books.prototype.readCheckBox = function () {
   if (this.readStatus) {
     this.readStatus = "Read";
-  } else this.readStatus = "Unread";
+  } else {
+    this.readStatus = "Unread";
+  }
 };
 
 Books.prototype.checkLibraryLength = function () {
@@ -60,10 +62,15 @@ Books.prototype.createListItems = function () {
       listItem.removeChild(this.parentElement);
       myLibrary.splice(book, 1);
     });
+
+    const { readStatus } = book;
+    for (let key in readStatus) {
+      if (readStatus === "Read") {
+        readStatusBtn.style.background = "green";
+      } else readStatusBtn.style.background = "red";
+    }
   });
 };
-
-Books.prototype.deleteBook = function () {};
 
 function addBookToLibraryHandler() {
   const bookTitle = document.getElementById("book-title").value;
@@ -72,12 +79,12 @@ function addBookToLibraryHandler() {
   const checkbox = document.getElementById("book-read").checked;
 
   const book = new Books(bookTitle, bookAuthor, bookPages, checkbox);
-  myLibrary.push(book);
 
   book.checkLibraryLength();
   book.readCheckBox();
   book.createListItems();
 
+  myLibrary.push(book);
   removeBackDropAndFormHandler();
 }
 
