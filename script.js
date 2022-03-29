@@ -2,6 +2,7 @@ const addBookBtn = document.querySelector(".header-button");
 const backDrop = document.querySelector(".backdrop");
 const libraryForm = document.querySelector(".book-form");
 const bookSubmitBtn = document.querySelector(".button-submit");
+const booksList = document.querySelector(".books-list__items");
 
 let myLibrary = [];
 
@@ -12,21 +13,20 @@ function Books(title, author, pages, readStatus) {
   this.readStatus = readStatus;
 }
 
-Books.prototype.readCheck = function () {
-  return this.readStatus
-    ? (this.readStatus = "Read")
-    : (this.readStatus = "Unread");
+Books.prototype.readCheckBox = function () {
+  if (this.readStatus) {
+    this.readStatus = "Read";
+  } else this.readStatus = "Unread";
 };
 
-const renderBookList = () => {
-  const booksList = document.querySelector(".books-list__items");
+Books.prototype.checkLibraryLength = function () {
   if (myLibrary.length !== 0) {
     booksList.classList.add("visible");
+    booksList.replaceChildren();
   } else return;
+};
 
-  // need to refactor this
-  booksList.replaceChildren();
-
+Books.prototype.createListItems = function () {
   myLibrary.forEach((book) => {
     const list = document.createElement("li");
     const bookListTitle = document.createElement("div");
@@ -55,7 +55,6 @@ const renderBookList = () => {
     list.append(readStatusBtn);
     list.append(deleteBookBtn);
 
-    // need to be normal function to work this in delete
     deleteBookBtn.addEventListener("click", function () {
       const listItem = document.querySelector(".books-list__items");
       listItem.removeChild(this.parentElement);
@@ -63,6 +62,8 @@ const renderBookList = () => {
     });
   });
 };
+
+Books.prototype.deleteBook = function () {};
 
 function addBookToLibraryHandler() {
   const bookTitle = document.getElementById("book-title").value;
@@ -72,9 +73,12 @@ function addBookToLibraryHandler() {
 
   const book = new Books(bookTitle, bookAuthor, bookPages, checkbox);
   myLibrary.push(book);
-  book.readCheck();
-  // addBackDropHandler();
-  renderBookList();
+
+  book.checkLibraryLength();
+  book.readCheckBox();
+  book.createListItems();
+
+  removeBackDropAndFormHandler();
 }
 
 const showBookFormHandler = function () {
@@ -82,13 +86,13 @@ const showBookFormHandler = function () {
   libraryForm.classList.add("visible");
 };
 
-const addBackDropHandler = () => {
+const removeBackDropAndFormHandler = () => {
   backDrop.classList.remove("visible");
   libraryForm.classList.remove("visible");
 };
 
 addBookBtn.addEventListener("click", showBookFormHandler);
 
-backDrop.addEventListener("click", addBackDropHandler);
+backDrop.addEventListener("click", removeBackDropAndFormHandler);
 
 bookSubmitBtn.addEventListener("click", addBookToLibraryHandler);
