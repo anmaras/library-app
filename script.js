@@ -12,17 +12,12 @@ function Books(title, author, pages, id) {
   this.pages = pages;
 }
 
-Books.prototype.delete = function (e) {
-  // const list = document.querySelector(".books-list__items");
-  const listItem = document.querySelector(".book-list__item-title");
-};
-
 const renderBookList = () => {
   const booksList = document.querySelector(".books-list__items");
   if (myLibrary.length !== 0) {
     booksList.classList.add("visible");
   }
-
+  // need to refactor this
   booksList.innerHTML = "";
 
   myLibrary.forEach((book) => {
@@ -39,6 +34,7 @@ const renderBookList = () => {
     bookListPage.className = "book-list__item-pages";
     readStatusBtn.className = "read-status";
     deleteBookBtn.className = "book-list__item-delete";
+    deleteBookBtn.dataset.action = "delete";
 
     bookListTitle.textContent = book.title;
     bookListAuthor.textContent = book.author;
@@ -53,8 +49,10 @@ const renderBookList = () => {
     list.append(readStatusBtn);
     list.append(deleteBookBtn);
 
-    deleteBookBtn.addEventListener("click", () => {
-      console.log(book.id);
+    //need to be normal function to work this in delete
+    deleteBookBtn.addEventListener("click", function () {
+      const listItem = document.querySelector(".books-list__items");
+      listItem.removeChild(this.parentElement);
     });
   });
 };
@@ -63,7 +61,7 @@ function addBookToLibraryHandler() {
   const bookTitle = document.getElementById("book-title").value;
   const bookAuthor = document.getElementById("book-author").value;
   const bookPages = document.getElementById("book-pages").value;
-  const randomId = Math.random();
+  const randomId = Math.random().toFixed(5);
 
   const book = new Books(bookTitle, bookAuthor, bookPages, randomId);
   myLibrary.push(book);
