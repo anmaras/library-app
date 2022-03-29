@@ -1,0 +1,11 @@
+/* BOOK LIST*/
+.books-list__items {
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1rem;
+  display: none;
+}
+
+.books-list__items.visible {
+  display: grid;
+}

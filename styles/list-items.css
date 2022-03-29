@@ -1,0 +1,17 @@
+.books-list__item {
+  background-color: rgb(207, 207, 207);
+  display: grid;
+  padding: 1rem;
+  justify-items: center;
+  justify-content: center;
+}
+
+.book-list__item-title,
+.book-list__item-author,
+.book-list__item-pages {
+  font-size: 2rem;
+}
+
+li button {
+  font-size: 2rem;
+}

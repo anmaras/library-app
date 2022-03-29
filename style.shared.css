@@ -1,0 +1,82 @@
+:root {
+  --ff-main: "Ubuntu", san-serif, serif;
+  --footer-header-txt-color: white;
+  --header-bg-clr: rgb(42, 146, 243);
+  --footer-bf-clr: rgb(42, 146, 243);
+  --form-bf-crl: rgb(235, 235, 235);
+  --form-btn-bg-clr: rgb(253, 176, 75);
+  --form-btn-txt-clr: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--ff-main);
+  min-height: 100vh;
+
+  /* Body Children Potition */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  background-color: var(--header-bg-clr);
+  color: var(--footer-header-txt-color);
+  padding: 1rem 2rem;
+}
+
+header div {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-button {
+  background-color: var(--form-btn-bg-clr);
+  color: var(--form-btn-txt-clr);
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-style: none;
+  border-radius: 30px;
+  min-width: fit-content;
+}
+
+/* MAIN */
+main {
+  flex: 1;
+  padding: 1rem;
+  width: 100vw;
+  /* Potition relative for form */
+  position: relative;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+/* FOOTER */
+footer {
+  font-size: 1rem;
+  color: var(--footer-header-txt-color);
+  background-color: var(--footer-bf-clr);
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
