@@ -5,8 +5,7 @@ const bookSubmitBtn = document.querySelector(".button-submit");
 
 let myLibrary = [];
 
-function Books(title, author, pages, id) {
-  this.id = id;
+function Books(title, author, pages) {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -16,9 +15,9 @@ const renderBookList = () => {
   const booksList = document.querySelector(".books-list__items");
   if (myLibrary.length !== 0) {
     booksList.classList.add("visible");
-  }
+  } else return;
   // need to refactor this
-  booksList.innerHTML = "";
+  booksList.replaceChildren();
 
   myLibrary.forEach((book) => {
     const list = document.createElement("li");
@@ -28,13 +27,12 @@ const renderBookList = () => {
     const readStatusBtn = document.createElement("button");
     const deleteBookBtn = document.createElement("button");
 
-    list.classList = "books-list__item";
+    list.className = "books-list__item";
     bookListTitle.className = "book-list__item-title";
     bookListAuthor.className = "book-list__item-author";
     bookListPage.className = "book-list__item-pages";
     readStatusBtn.className = "read-status";
     deleteBookBtn.className = "book-list__item-delete";
-    deleteBookBtn.dataset.action = "delete";
 
     bookListTitle.textContent = book.title;
     bookListAuthor.textContent = book.author;
@@ -49,10 +47,11 @@ const renderBookList = () => {
     list.append(readStatusBtn);
     list.append(deleteBookBtn);
 
-    //need to be normal function to work this in delete
+    // need to be normal function to work this in delete
     deleteBookBtn.addEventListener("click", function () {
       const listItem = document.querySelector(".books-list__items");
       listItem.removeChild(this.parentElement);
+      myLibrary.splice(book, 1);
     });
   });
 };
@@ -61,10 +60,10 @@ function addBookToLibraryHandler() {
   const bookTitle = document.getElementById("book-title").value;
   const bookAuthor = document.getElementById("book-author").value;
   const bookPages = document.getElementById("book-pages").value;
-  const randomId = Math.random().toFixed(5);
 
-  const book = new Books(bookTitle, bookAuthor, bookPages, randomId);
+  const book = new Books(bookTitle, bookAuthor, bookPages);
   myLibrary.push(book);
+
   addBackDropHandler();
   renderBookList();
 }
