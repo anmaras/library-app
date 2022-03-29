@@ -6,6 +6,27 @@ const booksList = document.querySelector(".books-list__items");
 
 let myLibrary = [];
 
+// Utilities Function
+
+const showBookFormHandler = function () {
+  backDrop.classList.add("visible");
+  libraryForm.classList.add("visible");
+};
+
+const removeBackDropAndFormHandler = function () {
+  backDrop.classList.remove("visible");
+  libraryForm.classList.remove("visible");
+};
+
+const checkMyLibraryLength = () => {
+  if (myLibrary.length !== 0) {
+    booksList.classList.add("visible");
+    booksList.replaceChildren();
+  } else return;
+};
+
+//Constructor Function
+
 function Books(title, author, pages, readStatus) {
   this.title = title;
   this.author = author;
@@ -13,22 +34,25 @@ function Books(title, author, pages, readStatus) {
   this.readStatus = readStatus;
 }
 
-Books.prototype.readCheckBox = function () {
-  if (this.readStatus) {
-    this.readStatus = "Read";
-  } else {
-    this.readStatus = "Unread";
-  }
-};
+function addBookToLibraryHandler() {
+  const bookTitle = document.getElementById("book-title").value;
+  const bookAuthor = document.getElementById("book-author").value;
+  const bookPages = document.getElementById("book-pages").value;
+  const checkbox = document.getElementById("book-read").checked;
 
-Books.prototype.checkLibraryLength = function () {
-  if (myLibrary.length !== 0) {
-    booksList.classList.add("visible");
-    booksList.replaceChildren();
-  } else return;
-};
+  const book = new Books(bookTitle, bookAuthor, bookPages, checkbox);
 
-Books.prototype.createListItems = function () {
+  myLibrary.push(book);
+
+  renderBookList();
+  removeBackDropAndFormHandler();
+}
+
+//Library DOM create book items function
+
+const renderBookList = function () {
+  checkMyLibraryLength();
+
   myLibrary.forEach((book) => {
     const list = document.createElement("li");
     const bookListTitle = document.createElement("div");
@@ -47,55 +71,31 @@ Books.prototype.createListItems = function () {
     bookListTitle.textContent = book.title;
     bookListAuthor.textContent = book.author;
     bookListPage.textContent = book.pages;
-    readStatusBtn.textContent = book.readStatus;
     deleteBookBtn.textContent = "Remove";
 
     booksList.append(list);
-    list.append(bookListTitle);
-    list.append(bookListAuthor);
-    list.append(bookListPage);
-    list.append(readStatusBtn);
-    list.append(deleteBookBtn);
+    list.append(
+      bookListTitle,
+      bookListAuthor,
+      bookListPage,
+      readStatusBtn,
+      deleteBookBtn
+    );
 
     deleteBookBtn.addEventListener("click", function () {
-      const listItem = document.querySelector(".books-list__items");
-      listItem.removeChild(this.parentElement);
-      myLibrary.splice(book, 1);
+      booksList.removeChild(this.parentElement);
+      myLibrary.splice(this, 1);
+      console.log(myLibrary);
     });
 
-    const { readStatus } = book;
-    for (let key in readStatus) {
-      if (readStatus === "Read") {
-        readStatusBtn.style.background = "green";
-      } else readStatusBtn.style.background = "red";
+    if (book.readStatus) {
+      readStatusBtn.style.background = "green";
+      readStatusBtn.textContent = "Read";
+    } else {
+      readStatusBtn.style.background = "red";
+      readStatusBtn.textContent = "Unread";
     }
   });
-};
-
-function addBookToLibraryHandler() {
-  const bookTitle = document.getElementById("book-title").value;
-  const bookAuthor = document.getElementById("book-author").value;
-  const bookPages = document.getElementById("book-pages").value;
-  const checkbox = document.getElementById("book-read").checked;
-
-  const book = new Books(bookTitle, bookAuthor, bookPages, checkbox);
-
-  book.checkLibraryLength();
-  book.readCheckBox();
-  book.createListItems();
-
-  myLibrary.push(book);
-  removeBackDropAndFormHandler();
-}
-
-const showBookFormHandler = function () {
-  backDrop.classList.add("visible");
-  libraryForm.classList.add("visible");
-};
-
-const removeBackDropAndFormHandler = () => {
-  backDrop.classList.remove("visible");
-  libraryForm.classList.remove("visible");
 };
 
 addBookBtn.addEventListener("click", showBookFormHandler);
