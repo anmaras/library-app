@@ -11,6 +11,13 @@ let myLibrary = [];
 const showBookFormHandler = function () {
   backDrop.classList.add("visible");
   libraryForm.classList.add("visible");
+  formInputsClear();
+};
+
+const formInputsClear = function () {
+  document.getElementById("book-title").value = "";
+  document.getElementById("book-author").value = "";
+  document.getElementById("book-pages").value = "";
 };
 
 const removeBackDropAndFormHandler = function () {
@@ -68,9 +75,9 @@ const renderBookList = function () {
     readStatusBtn.className = "read-status";
     deleteBookBtn.className = "book-list__item-delete";
 
-    bookListTitle.textContent = book.title;
-    bookListAuthor.textContent = book.author;
-    bookListPage.textContent = book.pages;
+    bookListTitle.textContent = `Book Title: ${book.title}`;
+    bookListAuthor.textContent = `Book Authot: ${book.author}`;
+    bookListPage.textContent = `Pages: ${book.pages}`;
     deleteBookBtn.textContent = "Remove";
 
     booksList.append(list);
