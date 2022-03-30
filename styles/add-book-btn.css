@@ -1,7 +1,7 @@
 .header-button {
   background-color: var(--hot-magenta);
   color: var(--form-btn-txt-clr);
-  padding: 1rem;
+  padding: 0.5rem;
   font-size: 1.5rem;
   font-weight: 500;
   border-style: none;
