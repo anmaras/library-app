@@ -47,7 +47,7 @@ function addBookToLibraryHandler() {
   const bookPages = document.getElementById("book-pages").value;
   const checkbox = document.getElementById("book-read").checked;
 
-  if (bookTitle === "" || bookAuthor === "" || bookPages === "") return;
+  // if (bookTitle === "" || bookAuthor === "" || bookPages === "") return;
 
   const book = new Books(bookTitle, bookAuthor, bookPages, checkbox);
 
