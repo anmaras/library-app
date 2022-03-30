@@ -78,7 +78,7 @@ const renderBookList = function () {
     deleteBookBtn.className = "book-list__item-delete";
 
     bookListTitle.textContent = `Book Title: ${book.title}`;
-    bookListAuthor.textContent = `Book Authot: ${book.author}`;
+    bookListAuthor.textContent = `Book Author: ${book.author}`;
     bookListPage.textContent = `Pages: ${book.pages}`;
     deleteBookBtn.textContent = "Remove";
 
