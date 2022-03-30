@@ -1,13 +1,38 @@
 .header-button {
   background-color: var(--hot-magenta);
   color: var(--form-btn-txt-clr);
-  padding: 0.5rem;
+  padding: 2rem;
   font-size: 1.5rem;
   font-weight: 500;
   border-style: none;
-  border-radius: 30px;
-}
 
+  width: 50px;
+  height: 50px;
+
+  border-radius: 100px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.233);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.5s;
+}
 .header-button:hover {
   background-color: var(--mellow-apricot);
+  transform: scale(1.1);
+}
+
+.header-button__img {
+  display: none;
+  filter: invert(100%);
+}
+.span:after {
+  content: "Add";
+  font-weight: 700;
+}
+.span:hover:after {
+  content: url(/icons/book-plus.svg);
+  filter: invert(100%);
+  transform: scale(1.65);
 }
