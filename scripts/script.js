@@ -3,6 +3,8 @@ const backDrop = document.querySelector(".backdrop");
 const libraryForm = document.querySelector(".book-form");
 const bookSubmitBtn = document.querySelector(".button-submit");
 const booksList = document.querySelector(".books-list__items");
+const HOT_MAGENTA = "#ff16cdff";
+const MELLOW_APROCOT = "#fdbb68ff";
 
 let myLibrary = [];
 
@@ -69,6 +71,9 @@ const renderBookList = function () {
     const bookListPage = document.createElement("div");
     const readStatusBtn = document.createElement("button");
     const deleteBookBtn = document.createElement("button");
+    const image = document.createElement("img");
+
+    image.src = "/icons/trash-can-outline.svg";
 
     list.className = "books-list__item";
     bookListTitle.className = "book-list__item-title";
@@ -76,11 +81,11 @@ const renderBookList = function () {
     bookListPage.className = "book-list__item-pages";
     readStatusBtn.className = "read-status";
     deleteBookBtn.className = "book-list__item-delete";
+    image.className = "delete-btn__img";
 
     bookListTitle.textContent = `Book Title: ${book.title}`;
     bookListAuthor.textContent = `Book Author: ${book.author}`;
     bookListPage.textContent = `Pages: ${book.pages}`;
-    deleteBookBtn.textContent = "Remove";
 
     booksList.append(list);
     list.append(
@@ -90,12 +95,13 @@ const renderBookList = function () {
       readStatusBtn,
       deleteBookBtn
     );
+    deleteBookBtn.append(image);
 
     if (book.readStatus) {
-      readStatusBtn.style.background = "green";
+      readStatusBtn.style.background = HOT_MAGENTA;
       readStatusBtn.textContent = "Read";
     } else {
-      readStatusBtn.style.background = "red";
+      readStatusBtn.style.background = MELLOW_APROCOT;
       readStatusBtn.textContent = "Unread";
     }
 
@@ -107,10 +113,10 @@ const renderBookList = function () {
     readStatusBtn.addEventListener("click", () => {
       if (readStatusBtn.textContent === "Read") {
         readStatusBtn.textContent = "Unread";
-        readStatusBtn.style.background = "red";
+        readStatusBtn.style.background = MELLOW_APROCOT;
       } else {
         readStatusBtn.textContent = "Read";
-        readStatusBtn.style.background = "green";
+        readStatusBtn.style.background = HOT_MAGENTA;
       }
     });
   });
