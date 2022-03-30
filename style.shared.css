@@ -44,9 +44,10 @@ header {
 }
 
 header div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  row-gap: 1rem;
 }
 
 .header-title {
@@ -57,9 +58,11 @@ header div {
 
 /* MAIN */
 main {
+  position: relative;
   flex: 1;
+  width: 100vw;
   overflow: auto;
-  padding: 1rem;
+  /* padding: 1rem; */
   background-color: var(--russian-violet);
 }
 
@@ -81,4 +84,15 @@ footer {
 
 .footer-logo img {
   filter: invert(100%);
+}
+
+@media (min-width: 40rem) {
+  header div {
+    grid-auto-flow: column;
+    grid-template-columns: 1fr max-content;
+  }
+
+  .header-title {
+    justify-self: center;
+  }
 }
