@@ -49,6 +49,10 @@ li {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  border-left: 4px solid rgb(123, 36, 138);
+  border-right: 4px solid rgb(123, 36, 138);
+  border-top: 2px solid rgb(123, 36, 138);
+  border-bottom: 2px solid rgb(123, 36, 138);
 }
 
 .header-title,
@@ -57,17 +61,7 @@ li {
 }
 
 .header-title {
-  font-size: 2rem;
-  letter-spacing: 0.2rem;
-}
-
-.header-button {
-  grid-row: 2/3;
-}
-
-.header-button img {
-  filter: invert(100%);
-  transform: scale(1.2);
+  letter-spacing: 0.1rem;
 }
 
 /* MAIN */
@@ -83,6 +77,11 @@ main {
 
 /* FOOTER */
 footer {
+  width: 98%;
+  min-width: max-content;
+  margin: 1rem auto;
+  border-radius: 200px;
+
   bottom: 0;
   padding: 1rem;
 
