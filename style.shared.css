@@ -88,11 +88,15 @@ footer {
 
 @media (min-width: 40rem) {
   header div {
-    grid-auto-flow: column;
-    grid-template-columns: 1fr max-content;
+    position: relative;
   }
 
   .header-title {
-    justify-self: center;
+    position: relative;
+  }
+  .header-button {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
