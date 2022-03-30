@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/scripts/script.js" defer></script>
+    <script src="/scripts/footer-date.js" defer></script>
     <link rel="stylesheet" href="style.shared.css" />
+    <link rel="stylesheet" href="/styles/add-book-btn.css" />
     <link rel="stylesheet" href="/styles/backdrop.css" />
     <link rel="stylesheet" href="/styles/form.css" />
     <link rel="stylesheet" href="/styles/list.css" />
@@ -23,10 +25,10 @@
     <header>
       <div>
         <h1 class="header-title">myLibrary</h1>
-        <button class="header-button">New Book</button>
       </div>
     </header>
     <main>
+      <button class="header-button">New Book</button>
       <div class="book-form">
         <p class="book-form__title">Add your Book</p>
         <label for="book-title"></label>
@@ -70,9 +72,11 @@
       </ul>
     </main>
     <footer>
-      <p class="footer-logo">Logo</p>
       <p class="footer-name">Antonis Maras</p>
-      <p class="footer-year">2022</p>
+      <a href="#" class="footer-logo"
+        ><img src="/icons/github.svg" alt="github logo"
+      /></a>
+      <p class="footer-year"></p>
     </footer>
   </body>
 </html>
