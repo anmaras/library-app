@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/scripts/script.js" defer></script>
     <script src="/scripts/footer-date.js" defer></script>
+    <script src="/scripts/header-btn.js" defer></script>
     <link rel="stylesheet" href="style.shared.css" />
     <link rel="stylesheet" href="/styles/add-book-btn.css" />
     <link rel="stylesheet" href="/styles/backdrop.css" />
@@ -23,9 +24,11 @@
   <body>
     <div class="backdrop"></div>
     <header>
-      <div>
+      <div class="header-container">
         <h1 class="header-title">myLibrary</h1>
-        <button class="header-button">New Book</button>
+        <button class="header-button">
+          <span class="span"></span>
+        </button>
       </div>
     </header>
     <main>
@@ -59,7 +62,7 @@
           <label for="book-read">Have you read it?</label>
           <input type="checkbox" name="book" id="book-read" checked />
         </div>
-        <button class="button-submit">Add Book</button>
+        <button class="button-submit"></button>
       </div>
       <ul class="books-list__items">
         <!-- <li class="books-list__item">
@@ -67,13 +70,13 @@
           <div class="book-list__item-author">Author</div>
           <div class="book-list__item-pages">Pages</div>
           <button class="read-status not-read">Read-Status</button>
-          <button class="book-list__item-delete">Remove</button>
+          <button class="book-list__item-delete"></button>
         </li> -->
       </ul>
     </main>
     <footer>
       <p class="footer-name">Antonis Maras</p>
-      <a href="#" class="footer-logo"
+      <a href="https://github.com/anmaras/library-app" class="footer-logo"
         ><img src="/icons/github.svg" alt="github logo"
       /></a>
       <p class="footer-year"></p>
