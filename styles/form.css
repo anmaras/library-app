@@ -1,11 +1,5 @@
 /* FORM */
 
-.book-form__title {
-  font-weight: 500;
-  font-size: 2rem;
-  color: var(--footer-header-txt-color);
-}
-
 .book-form {
   /* Form position */
   position: absolute;
@@ -32,6 +26,11 @@
   gap: 1rem;
 }
 
+.book-form__title {
+  font-weight: 500;
+  font-size: 2rem;
+  color: var(--footer-header-txt-color);
+}
 .book-form.visible {
   display: flex;
 }
@@ -61,16 +60,33 @@ input[type="checkbox"] {
 
 /* Book Form Button */
 .button-submit {
-  font-size: 1.35rem;
-  padding: 1rem 3rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
   font-weight: 500;
   border-style: none;
-  border-radius: 25px;
   background-color: var(--hot-magenta);
 
+  /* border: 1px solid rgb(222, 225, 226); */
   color: var(--form-btn-txt-clr);
+}
+
+.button-submit::after {
+  content: url(/icons/plus.svg);
+  transform: scale(2);
+  filter: invert(100%);
+
+  margin: 56px auto 50px;
 }
 
 .button-submit:hover {
   background-color: var(--mellow-apricot);
+  transform: scale(1.1);
+  /* box-shadow: 0px 0px 20px 1px var(--mellow-apricot); */
+  transition: 0.5s;
 }
