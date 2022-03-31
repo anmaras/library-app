@@ -15,11 +15,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   transition: 0.5s;
 }
 .header-button:hover {
-  background-color: var(--mellow-apricot);
+  background-color: var(--middle-red);
   transform: scale(1.1);
 }
 
