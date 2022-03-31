@@ -49,10 +49,8 @@ li {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  border-left: 4px solid rgb(123, 36, 138);
-  border-right: 4px solid rgb(123, 36, 138);
-  border-top: 2px solid rgb(123, 36, 138);
-  border-bottom: 2px solid rgb(123, 36, 138);
+  border-left: 4px solid rebeccapurple;
+  border-right: 4px solid rebeccapurple;
 }
 
 .header-title,
@@ -61,6 +59,7 @@ li {
 }
 
 .header-title {
+  font-size: 1.75rem;
   letter-spacing: 0.1rem;
 }
 
@@ -94,6 +93,9 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
+
+  border-left: 4px solid rebeccapurple;
+  border-right: 4px solid rebeccapurple;
 }
 
 .footer-logo img {
