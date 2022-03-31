@@ -1,0 +1,38 @@
+li button {
+  padding: 0.25rem 3rem;
+  border-style: none;
+  color: var(--footer-header-txt-color);
+}
+
+.read-status {
+  min-height: 50px;
+  min-width: 50px;
+  border-radius: 100px;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.read-status {
+  grid-column: 1/2;
+  grid-row: 1/4;
+}
+
+.read-status img.minus {
+  content: url(/icons/bookmark-minus.svg);
+}
+.read-status img.plus {
+  content: url(/icons/bookmark-check.svg);
+}
+
+.book-list__item-delete {
+  grid-column: 3/4;
+  grid-row: 1/4;
+  filter: invert(100%);
+  height: 2rem;
+}
+
+.book-list__item-delete:hover {
+  transform: scale(1.2);
+}
