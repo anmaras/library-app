@@ -13,13 +13,12 @@ let myLibrary = [];
 const showBookFormHandler = function () {
   backDrop.classList.add("visible");
   libraryForm.classList.add("visible");
-  formInputsClear();
+  // formInputsClear();
 };
 
 const formInputsClear = function () {
   document.getElementById("book-title").value = "";
   document.getElementById("book-author").value = "";
-  document.getElementById("book-pages").value = "";
 };
 
 const removeBackDropAndFormHandler = function () {
@@ -36,27 +35,10 @@ const checkMyLibraryLength = () => {
 
 //Constructor Function
 
-function Books(title, author, pages, readStatus) {
+function Books(title, author, readStatus) {
   this.title = title;
   this.author = author;
-  this.pages = pages;
   this.readStatus = readStatus;
-}
-
-function addBookToLibraryHandler() {
-  const bookTitle = document.getElementById("book-title").value;
-  const bookAuthor = document.getElementById("book-author").value;
-  const bookPages = document.getElementById("book-pages").value;
-  const checkbox = document.getElementById("book-read").checked;
-
-  // if (bookTitle === "" || bookAuthor === "" || bookPages === "") return;
-
-  const book = new Books(bookTitle, bookAuthor, bookPages, checkbox);
-
-  myLibrary.push(book);
-
-  renderBookList();
-  removeBackDropAndFormHandler();
 }
 
 //Library DOM create book items function
@@ -65,62 +47,102 @@ const renderBookList = function () {
   checkMyLibraryLength();
 
   myLibrary.forEach((book) => {
+    //Create  the li and li items
     const list = document.createElement("li");
+    const listItemContainer = document.createElement("div");
     const bookListTitle = document.createElement("div");
+    const starContainer = document.createElement("div");
     const bookListAuthor = document.createElement("div");
-    const bookListPage = document.createElement("div");
     const readStatusBtn = document.createElement("button");
-    const deleteBookBtn = document.createElement("button");
-    const image = document.createElement("img");
+    const deleteIcon = document.createElement("img");
+    const starIcon = document.createElement("img");
+    const bookmarkCheckIcon = document.createElement("img");
+    const bookmarkMinusIcon = document.createElement("img");
 
-    image.src = "/icons/trash-can-outline.svg";
+    //img srcs
+    deleteIcon.src = "/icons/trash-can-outline.svg";
+    starIcon.src = "/icons/star-outline.svg";
+    bookmarkCheckIcon.src = "/icons/bookmark-check.svg";
+    bookmarkMinusIcon.src = "/icons/bookmark-minus.svg";
 
+    //class names assign
     list.className = "books-list__item";
+    listItemContainer.className = "book-list__item-container";
+    starContainer.className = "stars-container";
     bookListTitle.className = "book-list__item-title";
     bookListAuthor.className = "book-list__item-author";
-    bookListPage.className = "book-list__item-pages";
     readStatusBtn.className = "read-status";
-    deleteBookBtn.className = "book-list__item-delete";
-    image.className = "delete-btn__img";
+    deleteIcon.className = "book-list__item-delete";
+    starIcon.className = "rating-stars";
+    bookmarkCheckIcon.className = "bookmark-check";
+    bookmarkMinusIcon.className = "bookmark-minus";
 
-    bookListTitle.textContent = `Book Title: ${book.title}`;
-    bookListAuthor.textContent = `Book Author: ${book.author}`;
-    bookListPage.textContent = `Pages: ${book.pages}`;
+    //text content assign
+    bookListTitle.textContent = `${book.title}`;
+    bookListAuthor.textContent = `by ${book.author}`;
 
-    booksList.append(list);
-    list.append(
+    //append to list
+    list.append(listItemContainer);
+
+    //append to listItemContainer
+    listItemContainer.append(
       bookListTitle,
       bookListAuthor,
-      bookListPage,
       readStatusBtn,
-      deleteBookBtn
+      starContainer,
+      deleteIcon
     );
-    deleteBookBtn.append(image);
 
-    if (book.readStatus) {
-      readStatusBtn.style.background = HOT_MAGENTA;
-      readStatusBtn.textContent = "Read";
-    } else {
-      readStatusBtn.style.background = MELLOW_APROCOT;
-      readStatusBtn.textContent = "Unread";
+    //append star img 5 times
+    for (let i = 0; i < 5; i++) {
+      starContainer.append(starIcon.cloneNode(true));
     }
 
-    deleteBookBtn.addEventListener("click", function () {
-      booksList.removeChild(this.parentElement);
+    if (book.readStatus) {
+      readStatusBtn.id = "read";
+      readStatusBtn.style.background = HOT_MAGENTA;
+      readStatusBtn.append(bookmarkCheckIcon);
+    } else {
+      readStatusBtn.id = "not_read";
+
+      readStatusBtn.style.background = MELLOW_APROCOT;
+      readStatusBtn.append(bookmarkMinusIcon);
+    }
+
+    deleteIcon.addEventListener("click", function () {
+      booksList.removeChild(this.parentElement.parentElement);
       myLibrary.splice(this, 1);
     });
 
     readStatusBtn.addEventListener("click", () => {
-      if (readStatusBtn.textContent === "Read") {
-        readStatusBtn.textContent = "Unread";
+      if (readStatusBtn.id === "read") {
+        readStatusBtn.id = "not_read";
+        bookmarkCheckIcon.replaceWith(bookmarkMinusIcon);
         readStatusBtn.style.background = MELLOW_APROCOT;
-      } else {
-        readStatusBtn.textContent = "Read";
+      } else if (readStatusBtn.id === "not_read") {
+        readStatusBtn.id = "read";
+        bookmarkMinusIcon.replaceWith(bookmarkCheckIcon);
         readStatusBtn.style.background = HOT_MAGENTA;
       }
     });
+    booksList.append(list);
   });
 };
+
+function addBookToLibraryHandler() {
+  const bookTitle = document.getElementById("book-title").value;
+  const bookAuthor = document.getElementById("book-author").value;
+  const checkbox = document.getElementById("book-read").checked;
+
+  // if (bookTitle === "" || bookAuthor === "" || bookPages === "") return;
+
+  const book = new Books(bookTitle, bookAuthor, checkbox);
+
+  myLibrary.push(book);
+
+  renderBookList();
+  removeBackDropAndFormHandler();
+}
 
 addBookBtn.addEventListener("click", showBookFormHandler);
 
