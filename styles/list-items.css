@@ -1,17 +1,44 @@
 .books-list__item {
-  background-color: rgb(207, 207, 207);
-  display: grid;
   padding: 1rem;
-  justify-items: center;
-  justify-content: center;
+  row-gap: 0.5rem;
+
+  border-radius: 35px;
+  border-left: 4px solid rebeccapurple;
+  border-right: 4px solid rebeccapurple;
+  border-top: 1px solid rebeccapurple;
+  border-bottom: 1px solid rebeccapurple;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.253);
 }
 
-.book-list__item-title,
-.book-list__item-author,
-.book-list__item-pages {
-  font-size: 2rem;
+.book-list__item-container {
+  border-radius: 50px;
+  background-color: var(--russian-violet-2);
+  display: grid;
+  grid-template-columns: max-content auto max-content;
+  grid-template-rows: repeat(3, auto);
+  align-items: center;
+  padding: 0.2rem;
 }
 
-li button {
-  font-size: 2rem;
+.book-list__item-title {
+  font-size: 1.5rem;
+  color: rgb(202, 185, 219);
+  margin-left: 0.5rem;
+}
+
+.book-list__item-author {
+  font-size: 0.875rem;
+  margin-left: 0.5rem;
+  color: rgb(231, 133, 116);
+}
+
+.stars-container {
+  margin-left: 0.5rem;
+}
+
+.rating-stars {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  height: 1rem;
+  filter: invert(100%);
 }
