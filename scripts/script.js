@@ -41,8 +41,6 @@ function Books(title, author, readStatus) {
   this.readStatus = readStatus;
 }
 
-//Library DOM create book items function
-
 Books.prototype.renderBookList = function (title, author, status) {
   const list = document.createElement("li");
   const listItemContainer = document.createElement("div");
@@ -117,10 +115,6 @@ Books.prototype.renderBookList = function (title, author, status) {
 Books.prototype.append = function () {
   booksList.append(mainFragment);
 };
-
-window.addEventListener("click", (e) => {
-  console.log(e.target);
-});
 
 function addBookToLibraryHandler() {
   const bookTitle = document.getElementById("book-title").value;
