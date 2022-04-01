@@ -106,4 +106,8 @@ footer {
   .header-container {
     grid-template-columns: repeat(3, 1fr);
   }
+  .books-list__items {
+    margin: auto;
+    width: 60%;
+  }
 }
