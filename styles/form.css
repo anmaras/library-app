@@ -9,8 +9,7 @@
   transform: translate(-50%, -50%);
 
   /* Form sizing */
-  padding: 2rem;
-  max-width: max-content;
+  padding: 4rem 1.5rem;
   background-color: var(--russian-violet);
   border-radius: 5px;
 
@@ -31,15 +30,16 @@
 
 .book-form__title {
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: var(--footer-header-txt-color);
 }
+
 .book-form.visible {
   display: flex;
 }
 
 input {
-  font-size: 1.35rem;
+  font-size: 1rem;
   padding: 1.5rem 1rem;
   background-color: var(--russian-violet-2);
   border-style: none;
@@ -52,7 +52,7 @@ input {
 }
 /* CheckBox Style */
 label[for="book-read"] {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--footer-header-txt-color);
 }
 input[type="checkbox"] {
@@ -66,7 +66,7 @@ input[type="checkbox"] {
   width: 50px;
   height: 50px;
   border-radius: 100px;
-  padding: 2.5rem;
+  padding: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,7 +82,7 @@ input[type="checkbox"] {
 
 .button-submit::after {
   content: url(/icons/book-plus.svg);
-  transform: scale(2);
+  transform: scale(1.5);
   filter: invert(100%);
   margin: 56px auto 50px;
 }
