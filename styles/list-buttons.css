@@ -19,13 +19,6 @@ li button {
   grid-row: 1/4;
 }
 
-.read-status img.minus {
-  content: url(/icons/bookmark-minus.svg);
-}
-.read-status img.plus {
-  content: url(/icons/bookmark-check.svg);
-}
-
 .book-list__item-delete {
   grid-column: 3/4;
   grid-row: 1/4;
