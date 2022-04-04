@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/scripts/script.js" defer></script>
     <script src="/scripts/footer-date.js" defer></script>
-    <script src="/scripts/header-btn.js" defer></script>
     <link rel="stylesheet" href="style.shared.css" />
     <link rel="stylesheet" href="/styles/add-book-btn.css" />
     <link rel="stylesheet" href="/styles/backdrop.css" />
@@ -33,7 +32,7 @@
       </div>
     </header>
     <main>
-      <div class="book-form">
+      <form class="book-form">
         <p class="book-form__title">Add your Book</p>
         <label for="book-title"></label>
         <input
@@ -56,7 +55,7 @@
           <input type="checkbox" name="book" id="book-read" checked />
         </div>
         <button class="button-submit"></button>
-      </div>
+      </form>
       <ul class="books-list__items"></ul>
     </main>
     <footer>
