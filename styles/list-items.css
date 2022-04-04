@@ -11,13 +11,15 @@
 }
 
 .book-list__item-container {
-  border-radius: 50px;
+  border-radius: 20px;
   background-color: var(--russian-violet-2);
   display: grid;
   grid-template-columns: max-content auto max-content;
-  grid-template-rows: repeat(3, auto);
+  align-content: center;
   align-items: center;
-  padding: 0.2rem;
+  padding: 1rem;
+  row-gap: 0.25rem;
+  height: 100%;
 }
 
 .book-list__item-title {
@@ -27,18 +29,25 @@
 }
 
 .book-list__item-author {
+  display: flex;
   font-size: 0.875rem;
   margin-left: 0.5rem;
   color: rgb(231, 133, 116);
 }
 
 .stars-container {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 }
 
 .rating-stars {
-  grid-column: 2/3;
-  grid-row: 3/4;
+  /* grid-column: 2/3;
+  grid-row: 3/4; */
   height: 1rem;
   filter: invert(100%);
+}
+
+.books-list__item:hover {
+  transition: 0.5s;
+  transform: scale(1.01);
+  box-shadow: 0px 0px 10px 1px rgb(12, 163, 223);
 }
