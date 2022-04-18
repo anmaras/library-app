@@ -4,9 +4,9 @@
   grid-auto-rows: 1fr;
   gap: 1rem;
   word-break: break-word;
-  display: none;
+  display: grid;
+  /* display: none; */
 }
 
 .books-list__items.visible {
-  display: grid;
 }

@@ -38,12 +38,19 @@
 .stars-container {
   margin-left: 1rem;
 }
+.stars-container.hidden {
+  visibility: hidden;
+}
 
 .rating-stars {
-  /* grid-column: 2/3;
-  grid-row: 3/4; */
   height: 1rem;
-  filter: invert(100%);
+  /* filter: invert(100%); */
+  filter: invert(22%) sepia(87%) saturate(2665%) hue-rotate(299deg)
+    brightness(106%) contrast(115%);
+}
+
+.rating-stars.color {
+  filter: invert(0%);
 }
 
 .books-list__item:hover {

@@ -50,11 +50,20 @@
           placeholder="Author"
           required
         />
+        <label for="book-rating"></label>
+        <input
+          type="number"
+          max="5"
+          min="1"
+          required
+          placeholder="Rating"
+          id="book-rating"
+        />
         <div class="book-form__checkbox">
           <label for="book-read">Have you read it?</label>
           <input type="checkbox" name="book" id="book-read" checked />
         </div>
-        <button class="button-submit"></button>
+        <button class="button-submit" type="submit"></button>
       </form>
       <ul class="books-list__items"></ul>
     </main>
