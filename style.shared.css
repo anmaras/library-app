@@ -70,7 +70,6 @@ main {
   flex: 1;
   width: 100vw;
   overflow: auto;
-  /* padding: 1rem; */
   background-color: var(--russian-violet);
 }
 
